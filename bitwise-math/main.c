@@ -7,9 +7,49 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "lrgmath.h"
+
+typedef unsigned short int bit;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printf("Hello, World!\n");
+    /*size_t old_len = 10;
+    bit *test_arr = malloc(old_len * sizeof(bit));
+    
+    for(int i = 0; i < 10; i++){
+        test_arr[i] = i; //int -> char conversion
+    }
+    
+    //size_t new = 1000;
+    size_t new_len = 100;
+    test_arr = realloc(test_arr, new_len*sizeof(bit));
+    
+    push_back(test_arr, old_len, new_len);
+    
+    for(unsigned long int i=0; i < new_len; i++){
+        printf("%u", test_arr[i]);
+    }*/
+    
+    bit *a = malloc(4 * sizeof(bit));// [0,0,0,0,0,1];
+    bit *b = malloc(4 * sizeof(bit));//[0,0,0,0,0,1];
+    
+    a[3] = 1;
+    a[2] = 1;
+    a[1] = 1;
+    b[0] = 1;
+    
+    bit *result = add(a, b, 4, 4);
+    
+    for(int i = 0; i < 4; i++){
+        printf("%d", result[i]);
+    }
+    
+    free(result);
+    free(a);
+    free(b);
+    
+    printf("\n");
     return 0;
 }
