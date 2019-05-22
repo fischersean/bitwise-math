@@ -38,8 +38,8 @@ int main(int argc, const char * argv[]) {
     a[3] = 1;
     a[2] = 1;
     a[1] = 1;
-    a[0] = 0;
-    b[3] = 0;
+    a[0] = 1;
+    b[3] = 1;
     b[2] = 1;
     b[1] = 1;
     b[0] = 0;
@@ -71,5 +71,6 @@ int main(int argc, const char * argv[]) {
     free(b);
     
     printf("\n\n");
+    
     return 0;
 }

@@ -141,6 +141,8 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
     
     //Take two bit arrays, of any length (max is size_t) and subtracts them. Does not free buffer a or buffer b
     
+    //Only valid if buffer_a > buffer_b
+    
     //https://www.electronics-tutorials.ws/combination/binary-subtractor.html
     
     //Need to eventually move this out of this function to a seperate one
@@ -174,6 +176,8 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
 }
 
 bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
+    
+    //Worst case scenario is x^2, therefore we need 2x the number of bits to guarantee we have enough to store the answer
     
     return 0;
 }
