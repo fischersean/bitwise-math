@@ -1,6 +1,7 @@
 bitwise-math.xcodeproj/
 *.xcodeproj
 *.json
+.vscode/
 mem_for_mult.py
 
 # Prerequisites
