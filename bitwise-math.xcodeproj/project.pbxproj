@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB6CF7842290718200A8BE07 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BB6CF7832290718200A8BE07 /* main.c */; };
+		BB6CF78C229071E000A8BE07 /* lrgmath.c in Sources */ = {isa = PBXBuildFile; fileRef = BB6CF78B229071E000A8BE07 /* lrgmath.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		BB6CF7802290718200A8BE07 /* bitwise-math */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bitwise-math"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6CF7832290718200A8BE07 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		BB6CF78A229071E000A8BE07 /* lrgmath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lrgmath.h; sourceTree = "<group>"; };
+		BB6CF78B229071E000A8BE07 /* lrgmath.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lrgmath.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				BB6CF7832290718200A8BE07 /* main.c */,
+				BB6CF78B229071E000A8BE07 /* lrgmath.c */,
+				BB6CF78A229071E000A8BE07 /* lrgmath.h */,
 			);
 			path = "bitwise-math";
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6CF7842290718200A8BE07 /* main.c in Sources */,
+				BB6CF78C229071E000A8BE07 /* lrgmath.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

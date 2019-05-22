@@ -38,9 +38,29 @@ int main(int argc, const char * argv[]) {
     a[3] = 1;
     a[2] = 1;
     a[1] = 1;
-    b[0] = 1;
+    a[0] = 0;
+    b[3] = 0;
+    b[2] = 1;
+    b[1] = 1;
+    b[0] = 0;
     
-    bit *result = add(a, b, 4, 4);
+    bit *result = subtract(a, b, 4, 4);
+    
+    for(int i = 0; i < 4; i++){
+        printf("%d", a[i]);
+    }
+    
+    printf("\n");
+    
+    for(int i = 0; i < 4; i++){
+        printf("%d", b[i]);
+    }
+    printf("-\n");
+    
+    for(int i = 0; i < 4; i++){
+        printf("-");
+    }
+    printf("\n");
     
     for(int i = 0; i < 4; i++){
         printf("%d", result[i]);
@@ -50,6 +70,6 @@ int main(int argc, const char * argv[]) {
     free(a);
     free(b);
     
-    printf("\n");
+    printf("\n\n");
     return 0;
 }
