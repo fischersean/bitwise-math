@@ -1,3 +1,7 @@
+*.xcodeproj
+*.json
+mem_for_mult.py
+
 # Prerequisites
 *.d
 
