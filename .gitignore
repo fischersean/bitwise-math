@@ -4,6 +4,8 @@ bitwise-math.xcodeproj/
 .vscode/
 mem_for_mult.py
 
+bitwise-math/main.c
+
 # Prerequisites
 *.d
 
@@ -57,4 +59,3 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-bitwise-math/main.c

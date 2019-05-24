@@ -15,6 +15,7 @@
 #include "lrgmath.h"
 #include <string.h>
 
+/*
 char *product(char *a, char *b, size_t length){
     //Takes two integers, represented by char arrays of their digits and returns a char array of their product
     
@@ -44,8 +45,8 @@ char *product(char *a, char *b, size_t length){
     
     return result;
     
-}
-
+}*/
+/*
 char *bit_to_int(bit *n, size_t bit_length){
     //Given bit array *n, convert to char* where each element is a digit in the base-10 number
     char *result = malloc(bit_length*sizeof(char));
@@ -58,7 +59,7 @@ char *bit_to_int(bit *n, size_t bit_length){
     }
     
     return result;
-}
+}*/
 
 void push_back(bit *n, size_t old_len, size_t new_len){
     //Takes an array, originally of length old_len before realloc to new_len and pushes values to end
@@ -177,13 +178,37 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
 
 bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
     
+    //https://en.wikipedia.org/w/index.php?title=Binary_multiplier&section=4#Unsigned_numbers
     //Worst case scenario is x^2, therefore we need 2x the number of bits to guarantee we have enough to store the answer
+    size_t new_len;
     
-    return 0;
+    if(a_len > b_len){
+        new_len = a_len;
+    }else{
+        new_len = b_len;
+    }
+
+    bit *n = malloc((1+a_len) * sizeof(bit));
+
+    new_len = new_len * 2;
+    
+    bit *result = malloc((new_len)*sizeof(bit));
+
+    //fix format and add leading 0's
+    equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
+    
+    for (MAX_LEN i = new_len; i >= 0; i--){
+        
+    }
+
+
+    return result;
 }
+
 
 bit *divide(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
     
     return 0;
 }
+
 
