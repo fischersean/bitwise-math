@@ -3,8 +3,8 @@ bitwise-math.xcodeproj/
 *.json
 .vscode/
 mem_for_mult.py
-
-bitwise-math/main.c
+*.py
+src/main.c
 
 # Prerequisites
 *.d
