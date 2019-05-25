@@ -98,6 +98,28 @@ void equalize_bit_size(bit *a, bit *b, size_t a_len, size_t b_len){
     
 }
 
+void bit_shift_left(bit *a, MAX_LEN a_len, MAX_LEN dist){
+    // Shift all bits of a dist places left
+
+    for(MAX_LEN j = 0; j < dist; j++){
+        for(MAX_LEN i = 0; i < a_len; i++){
+            a[i] = a[i+1];
+        }
+        a[a_len-j-1] = 0;
+    }
+}
+
+void bit_shift_right(bit *a, MAX_LEN a_len, MAX_LEN dist){
+    // Shift all bits of a dist places right
+
+    for(MAX_LEN j = 0; j < dist; j++){
+        for(MAX_LEN i = a_len-1; i > 0; i--){
+            a[i] = a[i-1];
+        }
+        a[j] = 0;
+    }
+}
+
 bit *add(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
     //Take two bit arrays, of any length (max is size_t) and adds them together. Does not free buffer a or buffer b
     
@@ -193,7 +215,7 @@ bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len){
     new_len = new_len * 2;
     
     bit *result = malloc((new_len)*sizeof(bit));
-
+    // bit *frame = 
     //fix format and add leading 0's
     equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
     

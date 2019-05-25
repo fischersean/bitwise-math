@@ -35,4 +35,8 @@ bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len);
 
 bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len);
 
+void bit_shift_right(bit *a, MAX_LEN a_len, MAX_LEN dist);
+
+void bit_shift_left(bit *a, MAX_LEN a_len, MAX_LEN dist);
+
 #endif /* lrgmath */
