@@ -5,6 +5,7 @@ bitwise-math.xcodeproj/
 mem_for_mult.py
 *.py
 src/main.c
+unity/
 
 # Prerequisites
 *.d
