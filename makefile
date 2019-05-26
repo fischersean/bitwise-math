@@ -8,6 +8,7 @@ GCFLAGS = -std=c11
 PASSED = `grep -s PASS build/results/TestMath.txt`
 FAIL = `grep -s FAIL build/results/TestMath.txt`
 IGNORE = `grep -s IGNORE build/results/TestMath.txt`
+N_FAILED = 'grep -s FAIL build/results/TestMath.txt | wc -l'
 
 PATHB = build/
 PATHD = build/depends/
@@ -37,8 +38,7 @@ test: $(BUILD_PATHS)
 	@echo "-----------------------\nPASSED:\n-----------------------"
 	@echo "$(PASSED)"
 	@echo "\nDONE"
-
-
+	$ sh count_fail.sh
 
 $(shell $(MKDIR) $(PATHB))
 
