@@ -1,3 +1,4 @@
+MKDIR = mkdir -p
 CLEANUP = rm -f
 GCFLAGS = -std=c11
 PASSED = `grep -s PASS build/results/TestMath.txt`
