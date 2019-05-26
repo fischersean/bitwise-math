@@ -2,12 +2,21 @@ MKDIR = mkdir -p
 CLEANUP = rm -f
 GCFLAGS = -std=c11
 
+.PHONY: clean
+.PHONY: test
+
 PASSED = `grep -s PASS build/results/TestMath.txt`
 FAIL = `grep -s FAIL build/results/TestMath.txt`
 IGNORE = `grep -s IGNORE build/results/TestMath.txt`
 
+PATHB = build/
+PATHD = build/depends/
+PATHO = build/objs/
+PATHR = build/results/
 
-TestMath.txt: build/objs/TestMath.o
+BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR)
+
+build/results/TestMath.txt: build/objs/TestMath.o
 	$ touch build/results/TestMath.txt
 	$ ./build/objs/TestMath.o
 	$ ./build/objs/TestMath.o > build/results/TestMath.txt
@@ -16,11 +25,11 @@ build/objs/TestMath.o: # TestMath.c ../src/lrgmath.c ../unity/src/unity.c
 	gcc -o build/objs/TestMath.o test/TestMath.c src/lrgmath.c unity/src/unity.c $(GCFLAGS)
 
 clean:
-	#$(CLEANUP) $(PATHO)*.o
+	# $(CLEANUP) $(PATHO)*.o
 	$(CLEANUP) build/objs/*.o
 	$(CLEANUP) build/results/*.txt
 
-test: build/results/
+test: $(BUILD_PATHS)
 	@echo "-----------------------\nIGNORES:\n-----------------------"
 	@echo "$(IGNORE)"
 	@echo "-----------------------\nFAILURES:\n-----------------------"
@@ -29,19 +38,12 @@ test: build/results/
 	@echo "$(PASSED)"
 	@echo "\nDONE"
 
-PATHB = build/
-PATHD = build/depends/
-PATHO = build/objs/
-PATHR = build/results/
 
-$(PATHB):
-	$(MKDIR) $(PATHB)
 
-$(PATHD):
-	$(MKDIR) $(PATHD)
+$(shell $(MKDIR) $(PATHB))
 
-$(PATHO):
-	$(MKDIR) $(PATHO)
+$(shell $(MKDIR) $(PATHD))
 
-$(PATHR):
-	$(MKDIR) $(PATHR)
+$(shell $(MKDIR) $(PATHO))
+
+$(shell $(MKDIR) $(PATHR))
