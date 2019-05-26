@@ -1,0 +1,8 @@
+test/TestMath.c:106:test_bit_shift_right:PASS
+test/TestMath.c:107:test_bit_shift_left:PASS
+test/TestMath.c:108:test_bit_add:PASS
+test/TestMath.c:109:test_bit_subtract:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
