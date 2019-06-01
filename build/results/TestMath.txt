@@ -1,0 +1,6 @@
+test/TestMath.c:286:test_bit_shift_right:PASS
+test/TestMath.c:287:test_bit_shift_left:PASS
+
+-----------------------
+2 Tests 0 Failures 0 Ignored 
+OK
