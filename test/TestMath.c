@@ -283,10 +283,9 @@ void test_bit_subtract(void)
 int main(void)
 {
     UNITY_BEGIN();
-
     RUN_TEST(test_bit_shift_right);
     RUN_TEST(test_bit_shift_left);
-    RUN_TEST(test_bit_add);
+    //RUN_TEST(test_bit_add);
     //RUN_TEST(test_bit_subtract);
 
     UNITY_END();
