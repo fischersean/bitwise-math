@@ -19,16 +19,17 @@ BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR)
 
 build/results/TestMath.txt: build/objs/TestMath.o
 	$ touch build/results/TestMath.txt
-	$ ./build/objs/TestMath.o
-	$ ./build/objs/TestMath.o > build/results/TestMath.txt
+	$ cd test && cp *.txt ../build/objs && ../build/objs/TestMath.o > ../build/results/TestMath.txt
+	# $ cd test && ../build/objs/TestMath.o > ../build/results/TestMath.txt
 
-build/objs/TestMath.o: # TestMath.c ../src/lrgmath.c ../unity/src/unity.c
+build/objs/TestMath.o:
 	gcc -o build/objs/TestMath.o test/TestMath.c src/lrgmath.c unity/src/unity.c $(GCFLAGS)
 
 clean:
 	# $(CLEANUP) $(PATHO)*.o
 	$(CLEANUP) build/objs/*.o
 	$(CLEANUP) build/results/*.txt
+	$(CLEANUP) build/objs/*.txt
 
 test: $(BUILD_PATHS)
 	@echo "-----------------------\nIGNORES:\n-----------------------"

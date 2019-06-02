@@ -6,6 +6,8 @@ mem_for_mult.py
 *.py
 src/main.c
 unity/
+test_file.txt
+test_fio.c
 
 # Prerequisites
 *.d

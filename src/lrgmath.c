@@ -111,6 +111,7 @@ bit *add(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
     bit *result = malloc((new_len) * sizeof(bit));
 
     //fix format and add leading 0's
+    //equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
     push_back(buffer_a, a_len, new_len);
     push_back(buffer_b, b_len, new_len);
 
@@ -155,7 +156,9 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
     bit *result = malloc((new_len) * sizeof(bit));
 
     //fix format and add leading 0's
-    equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
+    push_back(buffer_a, a_len, new_len);
+    push_back(buffer_b, b_len, new_len);
+    //equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
 
     bit a;
     bit b;
