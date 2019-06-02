@@ -127,7 +127,7 @@ void test_bit_shift_right(void)
         //len_result = test_suite->test_cases[i].len_result;
         len_shift = test_suite->test_cases[i].len_b;
 
-        test_a = realloc(test_a, len_a * sizeof(bit));
+        test_a = malloc(len_a * sizeof(bit));
         //test_b = realloc(test_b, len_b*sizeof(bit));
         //test_result = realloc(test_result, len_result*sizeof(bit));
 
@@ -174,7 +174,7 @@ void test_bit_shift_left(void)
         //len_result = test_suite->test_cases[i].len_result;
         len_shift = test_suite->test_cases[i].len_b;
 
-        test_a = realloc(test_a, len_a * sizeof(bit));
+        test_a = malloc(len_a * sizeof(bit));
         //test_b = realloc(test_b, len_b*sizeof(bit));
         //test_result = realloc(test_result, len_result*sizeof(bit));
 
@@ -287,6 +287,5 @@ int main(void)
     RUN_TEST(test_bit_shift_left);
     //RUN_TEST(test_bit_add);
     //RUN_TEST(test_bit_subtract);
-
     UNITY_END();
 }
