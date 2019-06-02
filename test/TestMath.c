@@ -98,6 +98,7 @@ void read_test_suite(struct TestSuite *test_suite, FILE **f)
 
 void free_test_suite(struct TestSuite *test_suit)
 {
+    //TODO
     return;
 }
 
@@ -196,88 +197,88 @@ void test_bit_shift_left(void)
 
 void test_bit_add(void)
 {
-    //Test Case 1
-    int a_len = 12;
-    int b_len = 13;
-    int result_len = 14;
-    bit *result = malloc(result_len * sizeof(bit));
+    FILE *test_file = fopen("bitadd_test.txt", "r");
+    struct TestSuite *test_suite = malloc(sizeof(struct TestSuite));
+    read_test_suite(test_suite, &test_file);
 
-    bit a[12] = {1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0};
-    bit b[13] = {1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0};
-    bit sum_ab[14] = {1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0};
+    bit *test_a;
+    bit *test_b;
+    bit *test_result;
 
-    bit *n = malloc(a_len * sizeof(bit));
+    int len_a;
+    int len_b;
+    int len_result;
+    int len_shift;
 
-    for (int i = 0; i < a_len; i++)
+    for (int i = 0; i < test_suite->n_cases; i++)
     {
-        n[i] = a[i];
+
+        len_a = test_suite->test_cases[i].len_a;
+        len_b = test_suite->test_cases[i].len_b;
+        len_result = test_suite->test_cases[i].len_result;
+        len_shift = test_suite->test_cases[i].len_b;
+
+        test_a = malloc(len_a * sizeof(bit));
+        test_b = malloc(len_b*sizeof(bit));
+        //test_result = realloc(test_result, len_result*sizeof(bit));
+
+        memcpy(test_a, test_suite->test_cases[i].bit_a, len_a*sizeof(bit));
+        memcpy(test_b, test_suite->test_cases[i].bit_b, len_b*sizeof(bit));
+        //memcpy(test_result, test_suite->test_cases[i].result, len_result*sizeof(bit));
+
+        test_result = add(test_a, test_b, len_a, len_b);
+
+        for (int j = 0; j < len_result; j++)
+        {
+            TEST_ASSERT_EQUAL_UINT(test_suite->test_cases[i].result[j], test_result[j]);
+        }
     }
 
-    bit *m = malloc(b_len * sizeof(bit));
-    for (int i = 0; i < b_len; i++)
-    {
-        m[i] = b[i];
-    }
-
-    bit *expected = malloc(result_len * sizeof(bit));
-    for (int i = 0; i < result_len; i++)
-    {
-        expected[i] = sum_ab[i];
-    }
-
-    result = add(n, m, a_len, b_len);
-    for (int i = result_len - 1; i >= 0; i--)
-    {
-        TEST_ASSERT_EQUAL_UINT(sum_ab[i], result[i]);
-    }
-
-    free(n);
-    free(m);
-    free(expected);
-    free(result);
+    free_test_suite(test_suite);
+    fclose(test_file);
 }
 
 void test_bit_subtract(void)
 {
-    //Test Case 1
-    int a_len = 13;
-    int b_len = 13;
-    int result_len = 11;
-    bit *result = malloc(result_len * sizeof(bit));
+    FILE *test_file = fopen("bitsubtract_test.txt", "r");
+    struct TestSuite *test_suite = malloc(sizeof(struct TestSuite));
+    read_test_suite(test_suite, &test_file);
 
-    bit a[13] = {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1};
-    bit b[13] = {1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1};
-    bit sum_ab[11] = {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0};
+    bit *test_a;
+    bit *test_b;
+    bit *test_result;
 
-    bit *n = malloc(a_len * sizeof(bit));
-
-    for (int i = 0; i < a_len; i++)
+    int len_a;
+    int len_b;
+    int len_result;
+    int len_shift;
+    
+    for (int i = 0; i < test_suite->n_cases; i++)
     {
-        n[i] = a[i];
+
+        len_a = test_suite->test_cases[i].len_a;
+        len_b = test_suite->test_cases[i].len_b;
+        len_result = test_suite->test_cases[i].len_result;
+        len_shift = test_suite->test_cases[i].len_b;
+
+        test_a = malloc(len_a * sizeof(bit));
+        test_b = malloc(len_b*sizeof(bit));
+        //test_result = realloc(test_result, len_result*sizeof(bit));
+
+        memcpy(test_a, test_suite->test_cases[i].bit_a, len_a*sizeof(bit));
+        memcpy(test_b, test_suite->test_cases[i].bit_b, len_b*sizeof(bit));
+        //memcpy(test_result, test_suite->test_cases[i].result, len_result*sizeof(bit));
+
+        test_result = subtract(test_a, test_b, len_a, len_b);
+
+        for (int j = 0; j < len_result; j++)
+        {
+            TEST_ASSERT_EQUAL_UINT(test_suite->test_cases[i].result[j], test_result[j]);
+        }
     }
 
-    bit *m = malloc(b_len * sizeof(bit));
-    for (int i = 0; i < b_len; i++)
-    {
-        m[i] = b[i];
-    }
-
-    bit *expected = malloc(result_len * sizeof(bit));
-    for (int i = 0; i < result_len; i++)
-    {
-        expected[i] = sum_ab[i];
-    }
-
-    result = subtract(n, m, a_len, b_len);
-    for (int i = 0; i < result_len; i++)
-    {
-        TEST_ASSERT_EQUAL_UINT(sum_ab[i], result[i]);
-    }
-
-    free(n);
-    free(m);
-    free(expected);
-    free(result);
+    free_test_suite(test_suite);
+    fclose(test_file);
 }
 
 int main(void)
@@ -285,7 +286,7 @@ int main(void)
     UNITY_BEGIN();
     RUN_TEST(test_bit_shift_right);
     RUN_TEST(test_bit_shift_left);
-    //RUN_TEST(test_bit_add);
-    //RUN_TEST(test_bit_subtract);
+    RUN_TEST(test_bit_add);
+    RUN_TEST(test_bit_subtract);
     UNITY_END();
 }
