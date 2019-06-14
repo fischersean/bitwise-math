@@ -142,6 +142,9 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
     //https://www.electronics-tutorials.ws/combination/binary-subtractor.html
 
     //Need to eventually move this out of this function to a seperate one
+
+    // D = (X xor Y) xor Bin
+    // Bout = ((not X) and Y) + (not (X xor Y)) and Bin
     size_t new_len;
 
     if (a_len > b_len)
@@ -173,44 +176,7 @@ bit *subtract(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
         carry_bit = (~a & b) | (~(a ^ b) & carry_bit);
         result[i] = difference;
     }
-
+    // If first bit is 0, bit shift left to cut off leading 0
+    bit_shift_left(result,new_len, 1);
     return result;
-}
-
-bit *mulitply(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
-{
-
-    //https://en.wikipedia.org/w/index.php?title=Binary_multiplier&section=4#Unsigned_numbers
-    //Worst case scenario is x^2, therefore we need 2x the number of bits to guarantee we have enough to store the answer
-    size_t new_len;
-
-    if (a_len > b_len)
-    {
-        new_len = a_len;
-    }
-    else
-    {
-        new_len = b_len;
-    }
-
-    bit *n = malloc((1 + a_len) * sizeof(bit));
-
-    new_len = new_len * 2;
-
-    bit *result = malloc((new_len) * sizeof(bit));
-    // bit *frame =
-    //fix format and add leading 0's
-    equalize_bit_size(buffer_a, buffer_b, a_len, b_len);
-
-    for (MAX_LEN i = new_len; i >= 0; i--)
-    {
-    }
-
-    return result;
-}
-
-bit *divide(bit *buffer_a, bit *buffer_b, size_t a_len, size_t b_len)
-{
-
-    return 0;
 }

@@ -240,6 +240,8 @@ void test_bit_add(void)
 
 void test_bit_subtract(void)
 {
+    char message_str[128];
+
     FILE *test_file = fopen("bitsubtract_test.txt", "r");
     struct TestSuite *test_suite = malloc(sizeof(struct TestSuite));
     read_test_suite(test_suite, &test_file);
@@ -270,10 +272,14 @@ void test_bit_subtract(void)
         //memcpy(test_result, test_suite->test_cases[i].result, len_result*sizeof(bit));
 
         test_result = subtract(test_a, test_b, len_a, len_b);
-
+        for(int j = 0; j < len_result; j++){
+            printf("%d", test_result[j]);
+        }
+        printf("\n");
         for (int j = 0; j < len_result; j++)
         {
-            TEST_ASSERT_EQUAL_UINT(test_suite->test_cases[i].result[j], test_result[j]);
+            sprintf(message_str, "%d, %d", i, j);
+            TEST_ASSERT_EQUAL_UINT_MESSAGE(test_suite->test_cases[i].result[j], test_result[j], message_str);
         }
     }
 
@@ -281,8 +287,9 @@ void test_bit_subtract(void)
     fclose(test_file);
 }
 
+
 int main(void)
-{
+{   
     UNITY_BEGIN();
     RUN_TEST(test_bit_shift_right);
     RUN_TEST(test_bit_shift_left);
