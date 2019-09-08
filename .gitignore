@@ -8,6 +8,7 @@ src/main.c
 unity/
 test_file.txt
 test_fio.c
+build/results/TestMath.txt
 
 # Prerequisites
 *.d
