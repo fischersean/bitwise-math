@@ -16,6 +16,6 @@ script:
   # Check versions of gcc, g++ and cmake
   - gcc -v
   # Run your build commands next
-  - sh get_unity.sh
+  - make clean
   - make
   - make test
