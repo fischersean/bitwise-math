@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../src/lrgmath.h"
-#include "../unity/src/unity.h"
+#include "./unity/src/unity.h"
 
 /*
 n_buff_a
